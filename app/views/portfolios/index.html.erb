@@ -1,0 +1,12 @@
+<h1>Portfolio Items</h1>
+
+<%= link_to "新しいアイテムを作成", new_portfolio_url%>
+
+<% @portfolio_items.each do |portfolio_item| %>
+  <p><%= link_to portfolio_item.title, portfolio_show_path(portfolio_item.id) %></p>
+  <p><%= portfolio_item.subtitle %></p>
+  <p><%= portfolio_item.body %></p>
+  <%= image_tag portfolio_item.thum_image unless portfolio_item.thum_image.nil?%>
+  <%= link_to "編集",edit_portfolio_path(portfolio_item.id) %>
+  <%= link_to "ポートフォリオアイテムを削除", portfolio_path(portfolio_item), method: :delete, data: { confirm: '本当に消去しますか?' } %>
+<% end %>
